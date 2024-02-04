@@ -1,0 +1,61 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+default_platform(:ios)
+#sync_code_signing(type: "appstore", app_identifier: "tools.fastlane.app")
+platform :ios do
+    lane :doctor do
+      # Check for any errors in the Fastlane configuration
+      fastlane_version
+      scan
+      match
+    end
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    match(git_basic_authorization: 'dHVncnVsdnVyYWw4OTpnaHBfMTZMMG92WmJ1N2VTeWFZNTFTVlZjOVRSRHN5R3hZM2xxZFN1')
+    app_store_connect_api_key(
+        key_id: "3RGRZGYNB8",
+        issuer_id: "23e56d4c-7f35-4b70-b4ac-e2144ba5a270",
+        key_filepath: "/Users/kasimtugrulvural/Downloads/AuthKey_3RGRZGYNB8.p8",
+      )
+                match(type: "appstore",
+                  app_identifier: "com.kasimtugrulvural.yemek")
+    #increment_build_number(xcodeproj: "Runner.xcodeproj")
+    increment_build_number({
+      build_number: 40,
+    })
+    build_app(workspace: "Runner.xcworkspace", scheme: "Runner", clean: true,
+         configuration: "Release",)
+    #pilot
+    upload_to_testflight
+  end
+
+  desc "Push a new beta build to Firebase Distribution"
+  lane :distribute do
+
+    sync_code_signing(type: "adhoc", app_identifier: "com.kasimtugrulvural.yemek")
+
+    match(git_basic_authorization: 'dHVncnVsdnVyYWw4OTpnaHBfMTZMMG92WmJ1N2VTeWFZNTFTVlZjOVRSRHN5R3hZM2xxZFN1')
+    increment_build_number(xcodeproj: "Runner.xcodeproj")
+    build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    release =  firebase_app_distribution(
+          app: "1:865037133654:ios:48c72c2de5eb78e67198f7",
+          groups: "alltesters",
+      release_notes: "Lots of amazing new features to test out!"
+        )
+    clean_build_artifacts
+  end
+end
+
+

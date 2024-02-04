@@ -1,0 +1,2 @@
+json_key_file("/Users/kasimtugrulvural/Documents/nourish-cousine/android/app/pc-api-6076967972193601931-381-4c3cc00961d6.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("com.kasimtugrulvural.yemek") # e.g. com.krausefx.app

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>865037133654-65jr0m6l0q5f5kkur6mnvhmudlomsqa2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.865037133654-65jr0m6l0q5f5kkur6mnvhmudlomsqa2</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>865037133654-2mtugq7p5t6gs33s6n2rrptnlafd46vd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAhcGMfesq3pTrWsk2lqNOWzJToYMWHKTs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>865037133654</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.kasimtugrulvural.yemek</string>
+	<key>PROJECT_ID</key>
+	<string>yemektarif-27776</string>
+	<key>STORAGE_BUCKET</key>
+	<string>yemektarif-27776.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:865037133654:ios:bd459ee6f155bdfe7198f7</string>
+</dict>
+</plist>

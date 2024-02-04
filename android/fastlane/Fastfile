@@ -1,0 +1,49 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+    desc "My awesome android"
+    lane :distribute do
+        match(git_basic_authorization: 'dHVncnVsdnVyYWw4OTpnaHBfMTZMMG92WmJ1N2VTeWFZNTFTVlZjOVRSRHN5R3hZM2xxZFN1')
+             build_android_app(task: "bundle", app_identifier: "com.kasimtugrulvural.yemek")
+        # build_android_app is a built-in fastlane action.
+            release =  firebase_app_distribution(
+                  app: "1:865037133654:android:4f74156dee8c4c937198f7",
+                  groups: "alltesters",
+              release_notes: "Lots of amazing new features to test out!",
+            android_artifact_type: "AAB"
+                )
+
+    end
+    desc "Submit a new version to the internal track in the Google Play"
+    lane :deploy_internal do
+      match(git_basic_authorization: 'dHVncnVsdnVyYWw4OTpnaHBfMTZMMG92WmJ1N2VTeWFZNTFTVlZjOVRSRHN5R3hZM2xxZFN1')
+      gradle(task: "clean")
+      gradle(
+          task: 'bundle',
+          build_type: 'Release',
+          )
+      upload_to_play_store(
+      track: 'internal',
+       aab: "//Users/kasimtugrulvural/Documents/nourish-cousine/build/app/outputs/bundle/release/app-release.aab",
+       )
+    end
+end
